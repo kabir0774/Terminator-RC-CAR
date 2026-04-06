@@ -1,4 +1,4 @@
-# kabir-projects
+
 # ⚡TERMINATOR— DIY Brushed RC Car
 
 ![Project Status](https://img.shields.io/badge/Status-Complete-brightgreen)
@@ -24,7 +24,7 @@
 
 **Terminator** is a custom-built brushed RC car designed and assembled entirely from scratch. The goal was to build a high-torque, responsive 4-wheel drive RC car using off-the-shelf components with a fully custom power and control circuit — no development board, no code.
 
-The challenge: decode FlySky PWM signals, drive four Johnson motors bidirectionally, and power everything from a DIY Li-Ion battery pack — all in pure hardware.
+The challenge: decode FlySky PPM signals, drive four Johnson motors bidirectionally, and power everything from a DIY Li-Ion battery pack — all in pure hardware.
 
 ---
 
@@ -36,10 +36,11 @@ The challenge: decode FlySky PWM signals, drive four Johnson motors bidirectiona
 | **Motor Speed** | 1000 RPM |
 | **Motor Driver** | BTS7960 (IBT-2) H-Bridge |
 | **Remote System** | FlySky CT6B Transmitter |
-| **Receiver** | FlySky FS-iA6B |
+| **Receiver** | FlySky FS-R6B |
 | **Battery** | DIY Li-Ion Pack (custom built) |
-| **Signal Type** | PWM from RC Receiver |
+| **Signal Type** | PPM from RC Receiver |
 | **Control** | Direct RC — no microcontroller |
+| **Signal decoding** |  360 degree servo motor chip has been connected in between reciever and motor driver to decode PPM signal to duty cycle PWM signal |
 
 ---
 
@@ -51,19 +52,21 @@ The challenge: decode FlySky PWM signals, drive four Johnson motors bidirectiona
 |-----------|----------|----------|
 | Johnson DC Motor (1000 RPM) | 4 | Drive wheels |
 | BTS7960 Motor Driver (IBT-2) | 2 | Bidirectional motor speed control |
-| FlySky FS-iA6B Receiver | 1 | PWM signal input from transmitter |
+| FlySky FS-R6B Receiver | 1 | Radio Frequency signal input from transmitter |
+| Buck converter | 1 | Voltage drop to give power to motor driver brain and reciver |
 | Li-Ion Cells (DIY Pack) | — | Main power source |
 | Custom Circuit Board | 1 | Signal decoding + power distribution |
+
 
 ### How It Works
 
 ```
 FlySky Transmitter
        ↓  (2.4GHz RF)
-FlySky Receiver (FS-iA6B)
-       ↓  (PWM Signals — Ch1: Steering, Ch2: Throttle)
-Custom Signal Decoder Circuit
-       ↓
+FlySky Receiver (FS-R6B)
+       ↓  (PPM Signals — Ch1: Steering, Ch2: Throttle)
+360 Degree servo motor chip
+       ↓  (Decodes PPM to PWM signal)
 BTS7960 Motor Drivers (x2)
        ↓
 4x Johnson Motors (1000 RPM)
@@ -91,26 +94,22 @@ Rather than using an off-the-shelf battery, a custom Li-Ion pack was assembled f
 
 ## 📡 Signal Decoding
 
-The FlySky receiver outputs standard **PWM signals** (1000µs – 2000µs pulse width):
+The FlySky receiver outputs standard **PPM signals** (1000µs – 2000µs pulse width):
 
 | Channel | Function | PWM Range |
 |---------|----------|-----------|
 | CH1 | Steering (Left/Right) | 1000µs – 2000µs |
 | CH2 | Throttle (Forward/Reverse) | 1000µs – 2000µs |
 
-The custom circuit decodes these PWM signals and maps them to the BTS7960 driver inputs — translating stick position directly into motor speed and direction without any microcontroller.
+The custom circuit decodes these PPM signals and maps them to the BTS7960 driver inputs — translating stick position directly into motor speed and direction without any microcontroller.
 
 ---
 
 ## 🔌 Wiring Diagram
 
-> *(Add your wiring diagram image here)*
+> ![circuit diagram](https://github.com/user-attachments/assets/2ae3c843-e5b9-49ed-9c5d-079ba83c1e84)
 
-```
-[schemes/wiring_diagram.jpg]
-```
 
-See [`schemes/`](schemes/README.md) for full resolution schematic.
 
 ---
 
