@@ -135,30 +135,13 @@ The custom circuit decodes these PPM signals and maps them to the BTS7960 driver
 **Challenge**: Ensuring all four 1000 RPM motors receive equal power for straight-line stability.
 **Solution**: Paired motors on left/right sides to a single BTS7960 channel each, ensuring symmetric power delivery.
 
----
 
-## 📁 Repository Structure
-
-```
-BLITZ-RC-Car/
-├── src/           # Circuit design files / any logic diagrams
-├── schemes/       # Wiring diagrams and schematics
-├── v-photos/      # Vehicle photos (multi-angle)
-├── t-photos/      # Builder photos
-├── video/         # Demo video links
-├── other/         # Datasheets, component references
-└── README.md      # This file
-```
-
----
 
 ## 🔮 Future Improvements
 
-- [ ] Add Arduino Nano for telemetry (speed, battery voltage display)
-- [ ] Upgrade to proper BMS for battery pack
-- [ ] Add FPV camera for first-person driving
-- [ ] Design custom PCB to replace breadboard/perfboard circuit
-- [ ] Implement RPM feedback using motor encoders
+- [ ] Upgrade to Radio Master transmitter for easy to use amore efficient.
+- [ ] Upgrade to IMAX-B6AC charger for proper and balanced charging of battery with prolonging battery life.
+- [ ] Changing to high quality planetry gear motor for more speed and torque.
 
 ---
 
