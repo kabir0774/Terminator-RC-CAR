@@ -151,6 +151,9 @@ The custom circuit decodes these PPM signals and maps them to the BTS7960 driver
 
 [![GitHub](https://img.shields.io/badge/GitHub-Kabir0774-black?logo=github)](https://github.com/Kabir0774)
 
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Kabir%20Verma-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kabir-verma-b9b3b4384)
+
+
 ---
 
 ## 📜 License
